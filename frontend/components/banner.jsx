@@ -19,7 +19,7 @@ class Banner extends React.Component {
 
   render() {
     const currentBanner = this.getCurrentBanner();
-
+debugger
     return (
       <div className='hero-banner'>
         { currentBanner }

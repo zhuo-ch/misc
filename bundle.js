@@ -7525,7 +7525,6 @@ var fetchAllBanners = exports.fetchAllBanners = function fetchAllBanners() {
 
 var setCurrentBanner = exports.setCurrentBanner = function setCurrentBanner(banner) {
   return function (dispatch) {
-    debugger;
     dispatch(receiveCurrentBanner(banner));
   };
 };
@@ -29259,7 +29258,7 @@ var Banner = function (_React$Component) {
     key: 'render',
     value: function render() {
       var currentBanner = this.getCurrentBanner();
-
+      debugger;
       return _react2.default.createElement(
         'div',
         { className: 'hero-banner' },
@@ -29341,7 +29340,10 @@ var SideBar = function (_React$Component) {
 
   _createClass(SideBar, [{
     key: 'handleHover',
-    value: function handleHover() {}
+    value: function handleHover(e) {
+      e.preventDefault();
+      this.handleSetBanner(parseInt(e.currentTarget.value));
+    }
   }, {
     key: 'handleClick',
     value: function handleClick(e) {
@@ -29406,7 +29408,8 @@ var SideBar = function (_React$Component) {
     value: function getSideBarItem(key, item) {
       return _react2.default.createElement(
         'li',
-        { className: 'side-bar-item', value: key, key: key, onClick: this.handleClick },
+        { className: 'side-bar-item', value: key, key: key, onClick: this.handleClick,
+          onMouseOver: this.handleHover },
         _react2.default.createElement(
           'h2',
           null,
@@ -29439,7 +29442,7 @@ var SideBar = function (_React$Component) {
     value: function render() {
       var navArrows = this.getNavArrows();
       var sideBarList = this.getSideBarList();
-      debugger;
+
       return _react2.default.createElement(
         'div',
         { className: 'side-bar' },
@@ -29455,7 +29458,8 @@ var SideBar = function (_React$Component) {
 var mapStateToProps = function mapStateToProps(state) {
   return {
     currentBanner: state.banner.currentBanner,
-    banners: state.banner.banners
+    banners: state.banner.banners,
+    targeted: state.banner.targeted
   };
 };
 
@@ -29463,6 +29467,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     setCurrentBanner: function setCurrentBanner(banner) {
       return dispatch((0, _banner_actions.setCurrentBanner)(banner));
+    },
+    setTarget: function setTarget(target) {
+      return dispatch((0, _banner_actions.setTarget)(target));
     }
   };
 };

@@ -1,4 +1,3 @@
-
 export const RECEIVE_ALL_BANNERS = 'RECEIVE_ALL_BANNERS';
 export const RECEIVE_CURRENT_BANNER = 'RECEIVE_CURRENT_BANNER';
 
@@ -7,7 +6,6 @@ export const fetchAllBanners = () => dispatch => {
 }
 
 export const setCurrentBanner = banner => dispatch => {
-  debugger
   dispatch(receiveCurrentBanner(banner));
 }
 
