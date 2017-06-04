@@ -1,13 +1,13 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { Route, BrowserRouter } from 'react-router-dom';
-import Banner from './banner';
+import BannerContainer from './banner_container';
 
 const App = ({store}) => {
   return (
     <Provider store={store}>
-      <BrowserRouter>
-        <Route path='/' component={Banner} />
+      <BrowserRouter baseName='/shoplet'>
+        <Route path='/' component={BannerContainer} />
       </BrowserRouter>
     </Provider>
   );

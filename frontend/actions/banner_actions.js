@@ -20,7 +20,7 @@ const receiveCurrentBanner = currentBanner => ({
 });
 
 const allBanners = {
-  1: {header: 'June is National Safety Month', tagline: 'Hurray for Safety'},
-  2: {header: 'Dads and Grads', tagline: 'Celebrate with the perfect gift'},
-  3: {header: 'BBF Sale', tagline: 'shop for everything'},
+  1: {header: 'June is National Safety Month', tagline: 'Hurray for Safety', title: 'safety'},
+  2: {header: 'Dads and Grads', tagline: 'Celebrate with the perfect gift', title: 'dads'},
+  3: {header: 'BBF Sale', tagline: 'shop for everything', title: 'sale'},
 }

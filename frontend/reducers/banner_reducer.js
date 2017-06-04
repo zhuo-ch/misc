@@ -3,7 +3,9 @@ import { RECEIVE_ALL_BANNERS, RECEIVE_CURRENT_BANNER } from '../actions/banner_a
 
 const _nullState = {
   currentBanner: 1,
-  banners: {},
+  banners: {
+    1: {header: '', tagline: '', title: ''}
+  },
 };
 
 const BannerReducer = (state = _nullState, action) => {

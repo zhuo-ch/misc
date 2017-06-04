@@ -1,41 +1,17 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { fetchAllBanners } from '../actions/banner_actions';
-import SideBar from './side_bar';
+import { BrowserRouter, Link } from 'react-router-dom';
 
-class Banner extends React.Component {
-  constructor(props) {
-    super(props);
-    this.getCurrentBanner = this.getCurrentBanner.bind(this);
-  }
+export const Banner = ({banner}) => {
+  return (
+    <div className='banner'>
+      <section className='banner-side-bar'>
+        <h2>{ banner.header }</h2>
+        <h4>{ banner.tagline }</h4>
+        <Link to={ '/' + `${banner.title}` + '/'}>{ banner.title }</Link>
+      </section>
+      <section className='banner-img'>
 
-  componentWillMount() {
-    this.props.fetchAllBanners();
-  }
-
-  getCurrentBanner() {
-
-  }
-
-  render() {
-    const currentBanner = this.getCurrentBanner();
-debugger
-    return (
-      <div className='hero-banner'>
-        { currentBanner }
-        <SideBar />
-      </div>
-    );
-  }
+      </section>
+    </div>
+  )
 }
-
-const mapStateToProps = state => ({
-  currentBanner: state.banner.currentBanner,
-  banners: state.banner.banners,
-})
-
-const mapDispatchToProps = dispatch => ({
-  fetchAllBanners: () => dispatch(fetchAllBanners()),
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Banner);

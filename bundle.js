@@ -7544,9 +7544,9 @@ var receiveCurrentBanner = function receiveCurrentBanner(currentBanner) {
 };
 
 var allBanners = {
-  1: { header: 'June is National Safety Month', tagline: 'Hurray for Safety' },
-  2: { header: 'Dads and Grads', tagline: 'Celebrate with the perfect gift' },
-  3: { header: 'BBF Sale', tagline: 'shop for everything' }
+  1: { header: 'June is National Safety Month', tagline: 'Hurray for Safety', title: 'safety' },
+  2: { header: 'Dads and Grads', tagline: 'Celebrate with the perfect gift', title: 'dads' },
+  3: { header: 'BBF Sale', tagline: 'shop for everything', title: 'sale' }
 };
 
 /***/ }),
@@ -12047,9 +12047,9 @@ var _reactRedux = __webpack_require__(58);
 
 var _reactRouterDom = __webpack_require__(239);
 
-var _banner = __webpack_require__(114);
+var _banner_container = __webpack_require__(270);
 
-var _banner2 = _interopRequireDefault(_banner);
+var _banner_container2 = _interopRequireDefault(_banner_container);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -12061,8 +12061,8 @@ var App = function App(_ref) {
     { store: store },
     _react2.default.createElement(
       _reactRouterDom.BrowserRouter,
-      null,
-      _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _banner2.default })
+      { baseName: '/shoplet' },
+      _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _banner_container2.default })
     )
   );
 };
@@ -29211,82 +29211,44 @@ module.exports = __webpack_require__(161);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+exports.Banner = undefined;
 
 var _react = __webpack_require__(6);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(58);
-
-var _banner_actions = __webpack_require__(66);
-
-var _side_bar = __webpack_require__(115);
-
-var _side_bar2 = _interopRequireDefault(_side_bar);
+var _reactRouterDom = __webpack_require__(239);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+var Banner = exports.Banner = function Banner(_ref) {
+  var banner = _ref.banner;
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Banner = function (_React$Component) {
-  _inherits(Banner, _React$Component);
-
-  function Banner(props) {
-    _classCallCheck(this, Banner);
-
-    var _this = _possibleConstructorReturn(this, (Banner.__proto__ || Object.getPrototypeOf(Banner)).call(this, props));
-
-    _this.getCurrentBanner = _this.getCurrentBanner.bind(_this);
-    return _this;
-  }
-
-  _createClass(Banner, [{
-    key: 'componentWillMount',
-    value: function componentWillMount() {
-      this.props.fetchAllBanners();
-    }
-  }, {
-    key: 'getCurrentBanner',
-    value: function getCurrentBanner() {}
-  }, {
-    key: 'render',
-    value: function render() {
-      var currentBanner = this.getCurrentBanner();
-      debugger;
-      return _react2.default.createElement(
-        'div',
-        { className: 'hero-banner' },
-        currentBanner,
-        _react2.default.createElement(_side_bar2.default, null)
-      );
-    }
-  }]);
-
-  return Banner;
-}(_react2.default.Component);
-
-var mapStateToProps = function mapStateToProps(state) {
-  return {
-    currentBanner: state.banner.currentBanner,
-    banners: state.banner.banners
-  };
+  return _react2.default.createElement(
+    'div',
+    { className: 'banner' },
+    _react2.default.createElement(
+      'section',
+      { className: 'banner-side-bar' },
+      _react2.default.createElement(
+        'h2',
+        null,
+        banner.header
+      ),
+      _react2.default.createElement(
+        'h4',
+        null,
+        banner.tagline
+      ),
+      _react2.default.createElement(
+        _reactRouterDom.Link,
+        { to: '/' + ('' + banner.title) + '/' },
+        banner.title
+      )
+    ),
+    _react2.default.createElement('section', { className: 'banner-img' })
+  );
 };
-
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return {
-    fetchAllBanners: function fetchAllBanners() {
-      return dispatch((0, _banner_actions.fetchAllBanners)());
-    }
-  };
-};
-
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Banner);
 
 /***/ }),
 /* 115 */
@@ -29493,7 +29455,9 @@ var _banner_actions = __webpack_require__(66);
 
 var _nullState = {
   currentBanner: 1,
-  banners: {}
+  banners: {
+    1: { header: '', tagline: '', title: '' }
+  }
 };
 
 var BannerReducer = function BannerReducer() {
@@ -45183,6 +45147,97 @@ var valueEqual = function valueEqual(a, b) {
 };
 
 exports.default = valueEqual;
+
+/***/ }),
+/* 270 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(6);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(58);
+
+var _banner_actions = __webpack_require__(66);
+
+var _side_bar = __webpack_require__(115);
+
+var _side_bar2 = _interopRequireDefault(_side_bar);
+
+var _banner = __webpack_require__(114);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var BannerContainer = function (_React$Component) {
+  _inherits(BannerContainer, _React$Component);
+
+  function BannerContainer(props) {
+    _classCallCheck(this, BannerContainer);
+
+    var _this = _possibleConstructorReturn(this, (BannerContainer.__proto__ || Object.getPrototypeOf(BannerContainer)).call(this, props));
+
+    _this.getCurrentBanner = _this.getCurrentBanner.bind(_this);
+    return _this;
+  }
+
+  _createClass(BannerContainer, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      this.props.fetchAllBanners();
+    }
+  }, {
+    key: 'getCurrentBanner',
+    value: function getCurrentBanner() {
+      var banner = this.props.banners[this.props.currentBanner];
+      return _react2.default.createElement(_banner.Banner, { banner: banner });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var currentBanner = this.getCurrentBanner();
+      return _react2.default.createElement(
+        'div',
+        { className: 'banner-container' },
+        currentBanner,
+        _react2.default.createElement(_side_bar2.default, null)
+      );
+    }
+  }]);
+
+  return BannerContainer;
+}(_react2.default.Component);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    currentBanner: state.banner.currentBanner,
+    banners: state.banner.banners
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchAllBanners: function fetchAllBanners() {
+      return dispatch((0, _banner_actions.fetchAllBanners)());
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(BannerContainer);
 
 /***/ })
 /******/ ]);
