@@ -4913,6 +4913,9 @@ Object.defineProperty(exports, "__esModule", {
 var RECEIVE_ALL_BANNERS = exports.RECEIVE_ALL_BANNERS = 'RECEIVE_ALL_BANNERS';
 var RECEIVE_CURRENT_BANNER = exports.RECEIVE_CURRENT_BANNER = 'RECEIVE_CURRENT_BANNER';
 
+// on the working site, fetchAllBanners would be sending
+// an ajax request to retrieve banner data
+
 var fetchAllBanners = exports.fetchAllBanners = function fetchAllBanners() {
   return function (dispatch) {
     dispatch(receiveAllBanners(allBanners));
@@ -4939,10 +4942,14 @@ var receiveCurrentBanner = function receiveCurrentBanner(currentBanner) {
   };
 };
 
+// this is representative of what the server side table
+// would look like. This would would simplify changing and/or
+// rotating banners
+
 var allBanners = {
-  1: { header: 'June is National Safety Month', tagline: 'Hurray for Safety', title: 'safety' },
+  1: { header: 'June is National Safety Month', tagline: "When you need safety, we've got the net", title: 'safety' },
   2: { header: 'Dads', tagline: 'Celebrate dad with the perfect gift', title: 'dads' },
-  3: { header: 'Grads', tagline: 'Congratulate the achievement', title: 'grads' }
+  3: { header: 'Grads', tagline: 'This momentous occasion deserves something special', title: 'grads' }
 };
 
 /***/ }),
@@ -29407,6 +29414,11 @@ var SideBar = function (_React$Component) {
       e.preventDefault();
       this.handleSetBanner(parseInt(e.currentTarget.value));
     }
+
+    // on the working site, handleClick's push call will send the user
+    // to the target page or, if this were a single page app, handleClick
+    // could trigger a render of a target component or search
+
   }, {
     key: 'handleClick',
     value: function handleClick(e) {
@@ -29541,9 +29553,6 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     setCurrentBanner: function setCurrentBanner(banner) {
       return dispatch((0, _banner_actions.setCurrentBanner)(banner));
-    },
-    setTarget: function setTarget(target) {
-      return dispatch((0, _banner_actions.setTarget)(target));
     }
   };
 };

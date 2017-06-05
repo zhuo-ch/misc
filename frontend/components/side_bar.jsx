@@ -20,6 +20,10 @@ class SideBar extends React.Component {
     this.handleSetBanner(parseInt(e.currentTarget.value));
   }
 
+// on the working site, handleClick's push call will send the user
+// to the target page or, if this were a single page app, handleClick
+// could trigger a render of a target component or search
+
   handleClick(e) {
     e.preventDefault();
 
@@ -118,7 +122,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   setCurrentBanner: banner => dispatch(setCurrentBanner(banner)),
-  setTarget: target => dispatch(setTarget(target)),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SideBar));

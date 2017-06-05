@@ -57,7 +57,7 @@ a:hover {
 .banner {
   display: flex;
   flex: 5;
-  line-height: 1.5em;
+  line-height: 2em;
 }
 
 .banner-side-bar {
@@ -130,6 +130,8 @@ a:hover {
 .item-image {
   flex: 1;
   background-color: white;
+  display: flex;
+  align-items: center;
 }
 
 .item-image img {
@@ -141,7 +143,7 @@ a:hover {
   flex-direction: column;
   justify-content: space-around;
   margin: 10px;
-  font-size: 1vw;
+  font-size: 1.25em;
 }
 
 .arrow {
