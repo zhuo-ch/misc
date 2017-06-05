@@ -5,12 +5,12 @@ export const Banner = ({banner}) => {
   return (
     <div className='banner'>
       <section className='banner-side-bar'>
-        <h2>{ banner.header }</h2>
+        <h1>{ banner.header }</h1>
         <h4>{ banner.tagline }</h4>
-        <Link to={ '/' + `${banner.title}` + '/'}>{ banner.title }</Link>
+        <Link to={`${ banner.title }` + '/'}>Shop { banner.title } {' >>'}</Link>
       </section>
       <section className='banner-img'>
-
+        <img src={ 'assets/images/' + banner.title + '.jpg'}/>
       </section>
     </div>
   )

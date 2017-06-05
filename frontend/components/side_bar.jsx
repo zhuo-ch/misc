@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { setCurrentBanner, setTarget } from '../actions/banner_actions';
 import FontAwesome from 'react-fontawesome';
 
@@ -24,6 +25,7 @@ class SideBar extends React.Component {
 
     if (e.currentTarget.value) {
       this.handleSetBanner(parseInt(e.currentTarget.value));
+      this.props.history.push(`${ this.props.banners[e.currentTarget.value].title }/`)
     } else {
       this.handleSetBanner(this.getToggle(e.currentTarget.id));
     }
@@ -72,11 +74,18 @@ class SideBar extends React.Component {
   }
 
   getSideBarItem(key, item) {
+    const cName = parseInt(key) === this.props.currentBanner ? 'side-bar-item targeted' : 'side-bar-item';
+
     return (
-      <li className='side-bar-item' value={ key } key={ key } onClick= { this.handleClick }
+      <li className={ cName } value={ key } key={ key } onClick= { this.handleClick }
         onMouseOver={this.handleHover}>
-        <h2>{ item.header }</h2>
-        <h4>{ item.tagline }</h4>
+        <section className='item-image'>
+          <img src={ 'assets/images/' + item.title + '-mini.jpg' } />
+        </section>
+        <section className='item-text'>
+          <h4>{ item.header }</h4>
+          <h5>{ item.tagline }</h5>
+        </section>
       </li>
     );
   }
@@ -105,7 +114,6 @@ class SideBar extends React.Component {
 const mapStateToProps = state => ({
   currentBanner: state.banner.currentBanner,
   banners: state.banner.banners,
-  targeted: state.banner.targeted,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -113,4 +121,4 @@ const mapDispatchToProps = dispatch => ({
   setTarget: target => dispatch(setTarget(target)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(SideBar);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SideBar));

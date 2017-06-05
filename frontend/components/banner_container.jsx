@@ -21,6 +21,7 @@ class BannerContainer extends React.Component {
 
   render() {
     const currentBanner = this.getCurrentBanner();
+    
     return (
       <div className='banner-container'>
         { currentBanner }
