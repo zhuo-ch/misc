@@ -22,7 +22,7 @@ const receiveCurrentBanner = currentBanner => ({
   currentBanner,
 });
 
-// this is representative of what the server side table
+// this is a representation of what the server side table
 // would look like. This would would simplify changing and/or
 // rotating banners
 
