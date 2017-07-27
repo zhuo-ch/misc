@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+	<head>
+
+		<style type="text/css">
+
+			html{
+				padding-bottom:60px;
+			}
+
+			#main{
+				max-width:800px;
+				margin:0 auto;
+				padding:0px 30px;
+			}
+
+			#main ul ol{
+				margin:10px 0px;
+			}
+
+			#main ul>li{
+				margin:10px 0px;
+				padding:0px 0px 10px 0px;
+				border-bottom:1px solid #ccc;
+				list-style-type: none;
+			}
+			#main ul{
+				padding:20px;
+			}
+			#main div.guidelines{
+				background-color:#f1f1f1;
+				padding:0px 20px;
+				margin-top:25px;
+			}
+
+			#main video{
+				width:100%;
+			}
+
+			.screenshots .ss-1{
+				width:69%;
+				margin-right:5%;
+				float:left;
+			}
+
+			.screenshots .ss-2{
+				width:26%;
+				float:left;
+			}
+
+			.screenshots img{
+				width:100%;
+			}
+
+	
+		</style>
+	</head>
+	<body>
+		<section id="main">
+			<h1>BORN FED Interview Exercise</h1>
+
+			<p>Hello! You've made it to the development test portion of your interview with BORN Group. Congratulations!</p>
+			<p>In this portion of your interview, we've prepared some unstyled HTML structure and we'd like you to turn it into a (very simple) interactive interface.  This exercise should take you around 1 hour to complete. Please keep track of how long it takes you! The test includes a few basic rules/guidelines:</p>
+			<div class="guidelines">
+				<ul>
+					<li>Please write the JavaScript for a basic HTML5 content slider (or carousel). The HTML structure has been provided for you and is already mostly responsive. Please make sure your JavaScript takes into account there may be more than 3 items in the carousel/slider.</li>
+					<li>Please also add to the provided Stylesheet so that the following things occur:</li>
+					<ol>
+						<li>The text in each slider is vertically and horizontally centered.</li>
+						<li>The content in the "three columns" section should be separated into 4 columns for desktop and 3 columns for mobile ( <=767px ). There's no need to handle for tablet unless you would like to. Please note, no responsive framework is required to do this, but you can use one if you'd like.</li>
+						<li>The background colors in your version match the screenshot provided</li>
+					</ol>
+					<li>Things to note/hints:</li>
+					<ol>
+						<li>Your exercise only needs to take into account the Chrome (50+) browser, but you should make your code as browser-compatible as possible.</li>
+						<li>jQuery is included, but should only be used for DOM selection, not animation</li>
+						<li>There is a background image applied to each slide in the carousel ;)</li>
+						<li>"-webkit-column-count"</li>
+						<li>"-webkit-column-break-inside"</li>
+						<li>Do your best to construct an Object-oriented javascript file to control the carousel/slider</li>
+						<li>Don't worry if your font sizes don't match exactly, but the idea here is to get as close as you can to the examples</li>
+						<li>Bonus points if you map the left/right action to keyboard keys</li>
+					</ol>
+				</ul>
+			</div>
+			<p>You shouldn't need to change the DOM in index.html at all to complete the exercise, but you can if you must.</p>
+			<p>Please use the video and screenshots below as guidelines leading you to the intended result.</p>
+			<p>
+				<video src="inc/video/FED%20Exercise%20-%20Intended%20Result.mp4" controls></video>
+			</p>
+			<div class="screenshots">
+				<div class="ss-1">
+					<img src="inc/img/screenshot.png" />
+				</div>
+				<div class="ss-2">
+					<img src="inc/img/screenshot-mobile.png" />
+				</div>
+			</div>
+		</section>
+	</body>
+</html>
