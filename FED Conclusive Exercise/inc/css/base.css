@@ -35,21 +35,74 @@ header{
 
 .page-content .main-carousel .carousel-next{
 	right:0;
+	z-index: 1;
 }
 
 .page-content .main-carousel .carousel-prev{
 	left:0;
+	z-index: 1;
 }
 
 .page-content .main-carousel .carousel-cells{
-	width:99999px;
+	width:100%;
 	height:100%;
-
+	position: relative;
 }
 
 .page-content .main-carousel .carousel-cells article{
+	position: absolute;
+	top: 0;
+	left: 0;
 	width:100vw;
 	height:100%;
 	float:left;
-	display:flex;
+}
+
+.slide-text {
+	height: 100%;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+
+.next {
+	-webkit-animation: 0.5s linear 0s 1 normal forwards _next;
+	animation: 0.5s linear 0s 1 normal forwards _next;
+}
+
+.current-next {
+	-webkit-animation: 0.5s linear 0s 1 normal forwards _current_next;
+	animation: 0.5s linear 0s 1 normal forwards _current_next;
+}
+
+.previous {
+	-webkit-animation: 0.5s linear 0s 1 normal forwards _previous;
+	animation: 0.5s linear 0s 1 normal forwards _previous;
+}
+
+.current-previous {
+	-webkit-animation: 0.5s linear 0s 1 normal forwards _current_previous;
+	animation: 0.5s linear 0s 1 normal forwards _current_previous;
+}
+
+@-webkit-keyframes _next { from { margin: 0 } to { margin-left: -200%; } }
+@keyframes _next { from { margin: 0 } to { margin-left: -200%; } }
+@-webkit-keyframes _current_next { from { margin-right: -200%; } to { margin: 0; } }
+@keyframes _current_next { from { margin-right: -200%; } to { margin: 0; } }
+@-webkit-keyframes _previous { from { margin: 0 } to { margin-right: -200%} }
+@-webkit-keyframes _current_previous { from { margin-left: -200%} to { margin: 0;} }
+@keyframes _previous { from { margin: 0 } to { margin-right: -200%} }
+@keyframes _current_previous { from { margin-left: -200%} to { margin: 0;} }
+
+
+/*@-webkit-keyframes next_animation { from { margin-left: -20%; } to { margin-left: 100%; } }
+@keyframes next_animation { from { margin-left: -20%; } to { margin-left: 100%; } }
+@-webkit-keyframes current_next_animation { from { margin-left: -20%; } to { margin-left: 40%; } }
+@keyframes current_next_animation { from { margin-left: -20%; } to { margin-left: 40%; } }*/
+
+.hidden {
+	display: none;
 }
