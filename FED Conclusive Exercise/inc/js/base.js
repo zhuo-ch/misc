@@ -10,7 +10,24 @@
 		init:function(){
 			this.props.total_slides = $(".slide-text");
 			this.props.current_slide = 0;
+			$(".slide-text").addClass("hidden");
+			$(".slide-text").first().attr("class", "slide-text");
 			this.bindEvents();
+			document.addEventListener("keydown", Carousel.keys);
+		},
+		keys:function(e){
+			e.preventDefault();
+
+			switch (e.key) {
+				case "ArrowRight":
+					return Carousel.next();
+					break;
+				case "ArrowLeft":
+					return Carousel.previous();
+					break;
+				default:
+					return;
+			}
 		},
 		bindEvents:function(){
 			$(".carousel-next").on("click",function(){
@@ -41,6 +58,7 @@
 			// debugger
 		},
 		update:function(prev, type){
+			// debugger
 			$(".slide-text").addClass("hidden");
 			$(".slide-text").slice(prev, prev + 1).attr("class", "slide-text " + type);
 			$(".slide-text").slice(this.props.current_slide, this.props.current_slide + 1).attr("class", "slide-text current-" + type);
