@@ -9,7 +9,40 @@ header{
 	overflow:hidden;
 	z-index:2;
 	box-sizing:border-box;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
 }
+
+.logo {
+	position: absolute;
+	left: 0;
+	font-size: 2em;
+}
+
+nav {
+	height: 100%;
+}
+
+nav ul {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 100%;
+}
+
+nav ul li {
+	width: 50px;
+	height: 60%;
+	margin: 0px 2px;
+	background-color:#e2e2e2;
+	border-radius: 3px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
 
 .page-content{
 	padding-top:50px;
@@ -56,6 +89,7 @@ header{
 	width:100vw;
 	height:100%;
 	float:left;
+	background-color: white;
 }
 
 .slide-text {
@@ -67,6 +101,9 @@ header{
 	align-items: center;
 }
 
+.slide-text h1 {
+	font-size: 3em;
+}
 
 .next {
 	-webkit-animation: 0.5s linear 0s 1 normal forwards _next;
@@ -105,4 +142,39 @@ header{
 
 .hidden {
 	display: none;
+}
+
+.column-content {
+	padding: 20px 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	background-color: whitesmoke;
+}
+
+.column-content h1 {
+	font-size: 1.5em;
+}
+
+.three-columns {
+	/*display: flex;
+	justify-content: space-between;
+	width: 80%*/
+	column-count: 4;
+	margin: 15px 0px;
+}
+
+.list-block {
+	break-inside: avoid;
+	margin-bottom: 15px;
+}
+
+.list-block h3 {
+	margin-bottom: 15px;
+}
+
+@media only screen and (max-width: 768px) {
+	.three-columns {
+		column-count: 3;
+	}
 }
